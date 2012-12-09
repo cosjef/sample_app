@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+let(:base_title) { "Ruby on Rails Tutorial Sample App" }
+
 describe "Home page" do
-# What goes inside the quote marks is irrelevant to RSpec
-# but intended for human readers
+# What goes inside the 'it should' quote is irrelevant to RSpec
+# but intended for human readers.
 
     it "should have the h1 'Sample App'" do
       visit '/static_pages/home'
@@ -14,7 +16,7 @@ describe "Home page" do
     it "should have the title 'Home'" do
     	visit '/static_pages/home'
     	page.should have_selector('title',
-    		:text => "Ruby on Rails Tutorial Sample App | Home")
+    		:text => "#{base_title} | Home")
     end
   end
 
@@ -27,7 +29,7 @@ describe "Home page" do
   	it "should have the title 'Help'" do
   		visit '/static_pages/help'
   		page.should have_selector('title',
-  			:text => "Ruby on Rails Tutorial Sample App | Help")
+  			:text => "#{base_title} | Help")
   	end
    end
 
@@ -40,7 +42,7 @@ describe "Home page" do
 	  it "should have the title 'About Us'" do
 	 	visit '/static_pages/about'
 	 	page.should have_selector('title',
-	 		 :text => "Ruby on Rails Tutorial Sample App | About Us")
+	 		 :text => "#{base_title} | About Us")
 	  end 	 
    end
 
@@ -53,8 +55,8 @@ describe "Home page" do
 
       it "should have the title 'Contact'" do
          visit '/static_pages/contact'
-         page.should have_selector('contact',
-            :text => "Ruby on Rails Tutorial Sample App| Contact")
+         page.should have_selector('title',
+            :text => "#{base_title} | Contact")
        end
      end
 
