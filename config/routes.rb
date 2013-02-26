@@ -4,6 +4,9 @@ SampleApp::Application.routes.draw do
   resources :users
   # get "users/new"
 
+  # restrict actions to new, create, and destroy
+  resources :sessions, only: [:new, :create, :destroy]
+
 #  get "static_pages/home"
 #  get "static_pages/about"
 #  get "static_pages/help"
@@ -11,13 +14,14 @@ SampleApp::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/signup',  to: 'users#new'
-
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
 
   match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  # invoke destroy via an HTTP DELETE request
+  match '/signout', to: 'sessions#destroy', via: :delete
 
 
   # The priority is based upon order of creation:
